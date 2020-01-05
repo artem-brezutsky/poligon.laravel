@@ -14,8 +14,15 @@ class CreateBlogCategoriesTable extends Migration
     public function up()
     {
         Schema::create('blog_categories',static function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
+            $table->integer('patent_id')->unsigned()->default(0);
+
+            $table->string('slug')->unique();
+            $table->string('title');
+            $table->text('description')->nullable();
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
