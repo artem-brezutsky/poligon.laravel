@@ -19,8 +19,8 @@ class CreateBlogPostsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
 
-            $table->string('slug')->unique();
-            $table->string('title');
+            $table->string('slug', 600)->unique();
+            $table->string('title', 600);
 
             $table->text('excerpt')->nullable();
 
