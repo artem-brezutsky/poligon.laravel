@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
+use App\Model\BlogPost;
 use Illuminate\Http\Request;
 
-class RestTestController extends Controller
+class PostController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,10 @@ class RestTestController extends Controller
      */
     public function index()
     {
-        dd(1, __METHOD__);
+        $items = BlogPost::all();
+
+        return view('blog.posts.index', compact('items'));
+        dd($items);
     }
 
     /**
@@ -29,7 +33,7 @@ class RestTestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,7 +44,7 @@ class RestTestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +55,7 @@ class RestTestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +66,8 @@ class RestTestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +78,7 @@ class RestTestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
