@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factory;
 // Ошибки при сиде
 
 $factory->define(BlogPost::class, function (Faker $faker) {
-    $title = $faker->sentences(rand(3, 8), true);
+    $title = $faker->sentences(rand(3, 5), true);
     $txt = $faker->realText(rand(1000, 4000));
     $isPublished = rand(1, 5) > 1;
 
@@ -28,6 +28,6 @@ $factory->define(BlogPost::class, function (Faker $faker) {
         'created_at'   => $createdAt,
         'updated_at'   => $createdAt,
     ];
-//    dd($data);
+
     return $data;
 });
