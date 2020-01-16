@@ -18,4 +18,4 @@ Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], static function(){
     Route::resource('posts', 'PostController')->names('blog.posts');
 });
 
-Route::resource('rest', 'RestTestController')->names('restTest');
+//Route::resource('rest', 'RestTestController')->names('restTest');
