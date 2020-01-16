@@ -14,12 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], static function(){
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], static function () {
     Route::resource('posts', 'PostController')->names('blog.posts');
 });
 
+// Админка Блога
+$groupData = [
+    'namespace' => 'Blog\Admin',
+    'prefix'    => 'admin/blog'
+];
+Route::group($groupData, static function () {
+    // BlogCategory
+    $methods = ['index', 'edit', 'update', 'create', 'store',];
+    Route::resource('categories', 'CategoryController')
+        ->only($methods)
+        ->names('blog.admin.categories');
+});
 //Route::resource('rest', 'RestTestController')->names('restTest');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

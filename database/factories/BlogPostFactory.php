@@ -6,10 +6,8 @@ use App\Model\BlogPost;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 
-// Ошибки при сиде
-
 $factory->define(BlogPost::class, function (Faker $faker) {
-    $title = $faker->sentences(rand(3, 5), true);
+    $title = $faker->sentences(rand(1, 3), true);
     $txt = $faker->realText(rand(1000, 4000));
     $isPublished = rand(1, 5) > 1;
 
